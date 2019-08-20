@@ -15,4 +15,4 @@ the core Bachelor of Laws degrees taught at Flinders.
 This package was created for the 2019 Semester 2 class.  As of writing (20 August 2019)
 it is a work in progress.
 
-For any enquirires please contact [Mark Ferraretto](mailto:mark.ferraretto@flinders.edu.au)
+For any enquirires please contact [Mark Ferraretto](mailto:mark.ferraretto@flinders.edu.au) or on +61 8 7421 9816.
