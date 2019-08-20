@@ -1,0 +1,79 @@
+# Basic demonstration of using multiple endpoints for an interview
+---
+objects:
+  - endpoint: DADict
+---
+# This is our welcome screen.  We can choose to exit here
+# if we don't wish to accept the disclaimer
+mandatory: True
+question: Welcome!
+subquestion: |
+  Welcome to our service (we don't know what it is yet).  We hope you enjoy
+  using it!
+
+  ***Disclaimer:***  
+  **This advice is not to be taken as genuine legal advice and is not a substitute
+  for you seeking independent legal advice.**
+
+  If you continue you accept these terms.
+buttons:
+  - "I accept and want to continue": continue
+  - "I do not accept": exit
+---
+# This code block drives the interview.  It determines whether the initial
+# eligibility requirements have been met and if they are directs the
+# user to the 'eligible' endpoint.  Otherwise, it directs the user to the
+# 'ineligible' endpoint.  Each endpoint displays an exit screen
+# For the purposes of this exercise, a user is eligible to continue if they
+# are between 18 and 65 and an Australian citizen.
+# Note: This code block must be mandatory
+mandatory: True
+code: |
+  if MJFage_ok and MJFis_citizen == 'Yes':
+    endpoint['eligible']
+  else:
+    endpoint['ineligible']
+---
+# This question block asks the questions to drive the code block above.
+question: Personal Details
+fields:
+  - What is your age?: MJFage
+    datatype: integer
+  - Are you an Australian Citizen: MJFis_citizen
+    datatype: radio
+    choices:
+      - Yes
+      - No
+---
+# This code block works out MJFage_ok
+code: |
+  if 18 <= MJFage < 65:
+    MJFage_ok = True
+  else:
+    MJFage_ok = False
+---
+# This is the ineligible endpoint
+event: endpoint['ineligible']
+question: Eligibility requirements not met
+subquestion:
+  It appears you do not meet our eligibility requirements.  You cannot use
+  this service.
+
+  Please contact bla bla bla for more assistance
+buttons:
+  - Exit: exit
+  - Restart: restart
+---
+# This is the eligible endpoint.
+event: endpoint['eligible']
+question: Result of main program
+subquestion: |
+  The final report for whatever you are determining (eg: eligibility for the NDIS
+  or the SACAT stay application or the relative homelessness service) will be 
+  constructed in this subquestion field in your eligible endpoint.  By adding
+  variables and if statements into this field you will drive the main body of
+  your application
+buttons:
+  - Exit: exit
+  - Restart: restart
+---
