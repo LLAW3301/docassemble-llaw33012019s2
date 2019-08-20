@@ -56,24 +56,24 @@ code: |
 event: endpoint['ineligible']
 question: Eligibility requirements not met
 subquestion:
-  It appears you do not meet our eligibility requirements.  You cannot use
-  this service.
-  
-  Please contact bla bla bla for more assistance
+  It appears you do not meet our eligibility requirements.  You cannot use
+  this service.
+
+  Please contact bla bla bla for more assistance
 buttons:
-  - Exit: exit
-  - Restart: restart
+  - Exit: exit
+  - Restart: restart
 ---
 # This is the eligible endpoint.
 event: endpoint['eligible']
 question: Result of main program
 subquestion: |
-  The final report for whatever you are determining (eg: eligibility for the NDIS
-  or the SACAT stay application or the relative homelessness service) will be 
-  constructed in this subquestion field in your eligible endpoint.  By adding
-  variables and if statements into this field you will drive the main body of
-  your application
+  The final report for whatever you are determining (eg: eligibility for the NDIS
+  or the SACAT stay application or the relative homelessness service) will be 
+  constructed in this subquestion field in your eligible endpoint.  By adding
+  variables and if statements into this field you will drive the main body of
+  your application
 buttons:
-  - Exit: exit
-  - Restart: restart
+  - Exit: exit
+  - Restart: restart
 ---

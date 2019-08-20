@@ -17,7 +17,6 @@ buttons:
     url: https://flinders.edu.au
   - Do it again: restart
 ---
----
 question: Name
 subquestion: |
   Please enter your full name, including your middle name if you have one
