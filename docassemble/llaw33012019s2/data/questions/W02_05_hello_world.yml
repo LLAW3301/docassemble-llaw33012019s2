@@ -1,0 +1,43 @@
+---
+# My first Docassemble program
+mandatory: True
+question: Hello World!
+subquestion: |
+  ### Welcome to Docassemble!
+
+  Dear ${ MJFsalutation + ' ' + MJFlastname },
+
+  Thi sis a quick introduction to Markdown.
+
+  Two lines for a line break
+  because a single line doesn't break at all.
+
+  - Here's a list
+  - with some items
+  - in it
+
+  **Here's some bold text** and *text in italics*.
+
+  Column1|Column2
+  -------|-------
+  Salutation|${ MJFsalutation }
+  First Name|${ MJFfirstname }
+  Last Name|${ MJFlastname }
+attachment:
+  docx template file: W01_Docassemble_Template.docx
+buttons:
+  - I'm done: exit
+    url: https://flinders.edu.au
+  - Do it again: restart
+---
+question: Name
+fields:
+  - Salutation: MJFsalutation
+    choices:
+      - Dr
+      - Mr
+      - Mrs
+      - Ms
+  - First Name: MJFfirstname
+  - Last Name: MJFlastname
+---

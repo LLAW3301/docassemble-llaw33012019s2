@@ -1,0 +1,26 @@
+---
+# My first Docassemble program
+mandatory: True
+question: Hello World!
+subquestion: |
+  #### Welcome to my first ever Docassemble interview
+
+  Today I learnt:
+
+  - what a mandatory code block is;
+  - how to use a variable; and
+  - a *little bit* of Markdown
+
+  I, **${ MJFname }**, am pretty happy with myself!
+buttons:
+  - I'm done: exit
+    url: https://flinders.edu.au
+  - Do it again: restart
+---
+---
+question: Name
+subquestion: |
+  Please enter your full name, including your middle name if you have one
+fields:
+  - no label: MJFname
+---

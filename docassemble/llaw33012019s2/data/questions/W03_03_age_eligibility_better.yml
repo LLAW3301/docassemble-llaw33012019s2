@@ -1,0 +1,36 @@
+# Example code to demonstrate the operation of if statements
+---
+mandatory: True
+question: Age eligibility
+subquestion: |
+  You entered your age as **${ MJFage }**.
+  
+  You are
+  % if MJFage_ok:
+    **between 18 and 65**.
+  % else:
+    **not between 18 and 65**.
+  % endif
+  
+  We have determined that you are
+  % if MJFage_ok:
+    **eligible**.
+  % else:
+    **not eligible**.
+  % endif
+buttons:
+  - Exit: exit
+  - Restart: restart
+---
+code: |
+  if ( (MJFage >= 18) and
+       (MJFage < 65) ):
+    MJFage_ok = True
+  else:
+    MJFage_ok = False
+---
+question: What is your age?
+fields:
+  - no label: MJFage
+    datatype: integer
+---

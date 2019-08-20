@@ -1,0 +1,30 @@
+---
+# A program to alert Peter Dutton if a non-citizen is using the computer
+mandatory: True
+question: Immigration Alert
+subquestion: |
+  Your Ozzie status is: **${ MJFis_an_ozzie }**
+  
+  The Peter Dutton alert status is: **${ MJFalert_peter_dutton }**
+buttons:
+  - Exit: exit
+  - Restart: restart
+---
+# This code block contains the logic that determines
+# whether we are all good from a citizenship point of view
+code: |
+  if MJFis_citizen == 'Yes':
+    MJFis_an_ozzie = True
+    MJFalert_peter_dutton = False
+  else:
+    MJFis_an_ozzie = False
+    MJFalert_peter_dutton = True
+---
+question: Citizenship Status
+fields:
+  - Are you an Australian citizen?: MJFis_citizen
+    datatype: radio
+    choices:
+      - Yes
+      - No
+---
