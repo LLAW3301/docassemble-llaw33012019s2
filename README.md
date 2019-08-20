@@ -7,7 +7,8 @@
 This Docassemble package contains the source code and other resources used to teach
 students Docassemble, YAML and Python.
 
-Law in a Digital Age is a topic taught by the College of Business, Government and Law 
+Law in a Digital Age is a topic taught by the 
+[College of Business, Government and Law](https://www.flinders.edu.au/college-business-government-law)
 at [Flinders University](https://flinders.edu.au).  From 2020 it will form part of
 the core Bachelor of Laws degrees taught at Flinders.
 
