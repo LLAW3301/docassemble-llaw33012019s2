@@ -1,0 +1,68 @@
+# Best practice is to break your application into multiple
+# files and then use include blocks to draw them into
+# a main file which is responsible for running the application
+# itself.
+#
+# With mutliple files, it's best to come up with a way to name
+# them consistently and clearly.  A good example of this is
+#
+# NNN_ddddd.yml where:
+# - 'NNN'   is an abbreviated version of your application's name
+#           eg: if your application was called CBS NDIS Advisor, then
+#           your abbreviated name might be CNA
+# - 'ddddd' describes the code in this file.  You shoudl use 'main'
+#           for the file that is responsible for running your application
+#           otherwise, the convention is to name files in lower case using
+#           underscores to separate words eg: the ineligible endpoint 
+#           could be named 'ineligible_endpoint'.
+# Example:
+# The name for the CBS NDIS Advisor's main file would be:
+#   CNA_main.yml
+# and the name of the file dealing with the ineligible endpoint
+# would be:
+#   CNA_eligible_endpoint.yml
+#
+---
+# When you break your file up into multiple parts, you need to include them 
+# back into your main program file.  You do that with an 'include' block.  An
+# 'include' block simply lists the names of the files to be included.
+#
+# Included files are effectively 'tacked on' to the end of the main program.
+# This is important if you are declaring mandatory blocks in your included files
+# as the order you include files will determine the order in which mandatory
+# blocks are executed.
+#
+# A main file can ask questions in an included file
+include:
+  - W06_eligible_endpoint.yml
+  - W06_ineligible_endpoint.yml
+---
+# We use a DADict object to set up endpoints.  We don't know
+# what this is yet so just take it on face value
+objects:
+  - endpoint: DADict
+---
+# Welcome screen should go here
+mandatory: True
+question: Welcome Screen Title
+subquestion: |
+  Welcome Screen text
+  
+  ***Disclaimer:***  
+  
+  *Don't forget to add a disclaimer here*
+  
+  Would you like to continue?
+buttons:
+  - "Continue": continue
+  - "Exit": exit
+---
+#
+# Mandatory code block that drives the interview
+mandatory: True
+code: |
+  if some_tests:
+    endpoint['ineligible']
+  else:
+    endpoint['eligible']
+---
