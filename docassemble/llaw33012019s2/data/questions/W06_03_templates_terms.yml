@@ -1,0 +1,123 @@
+---
+mandatory: True
+question: W06 Templates and Terms
+subquestion: |
+  ### Your Vital Statistics
+  
+  Thanks for completing the Vital Statistics Survey.
+
+  ### Highlights
+  
+  % if MJFhobbies['Flying']:
+  ${ MJFflying_is_great }
+  % else:
+  ${ MJFother_hobbies }
+  % endif
+  
+  ----
+  We have collected this data from you
+  
+  Information|Your Input
+  -----------|----------
+  Your name             | ${ MJFsalutation } ${ MJFfirstname } ${ MJFlastname }
+  Your age              | ${ MJFage }
+  Are you employed?     | ${ MJFisemployed }
+  Your annual income    | ${ MJFincome_report }
+  Your favourite hobbies| ${ MJFhobby_zone }
+buttons:
+  - I'm done: exit
+  - Do it again!: restart
+---
+question: What is your name?
+fields:
+  - Salutation: MJFsalutation
+    choices:
+      - Dr
+      - Mr
+      - Mrs
+      - Ms
+    default: Mr
+  - First Name: MJFfirstname
+    default: Mark
+  - Last Name: MJFlastname
+    default: Ferraretto
+---
+question: How old are you?
+fields:
+  - no label: MJFage
+    datatype: integer
+    default: 49
+---
+question: Employment and Income
+fields:
+  - Are you employed?: MJFisemployed
+    datatype: radio
+    choices:
+      - Yes
+      - No
+    default: Yes
+  - What is your {income}?: MJFannualincome
+    datatype: currency
+    default: 45000
+    show if: 
+      variable: MJFisemployed
+      is: 'Yes'
+terms:
+  income: |
+    Your income should be your gross (ie: before tax) income
+---
+# If we are not employed, the income should be set to 0
+code: |
+  if MJFisemployed != 'Yes':
+    MJFannualincome = 0
+---
+question: Hobbies
+subquestion: |
+  Please select all of your favourite hobbies.
+fields:
+  - no label: MJFhobbies
+    datatype: checkboxes
+    choices:
+      - Flying
+      - Running
+      - Playing music
+      - Writing code
+      - Studying (Yes, really!)
+      - Socialising
+---
+template: MJFflying_is_great
+content: |
+  # YOU LOVE FLYING!! ME TOO!!
+
+  It is quite clear that you are an intelligent person with
+  your priorities straight and destined for success.
+---
+template: MJFother_hobbies
+content: |
+  %if not MJFhobbies.all_false():
+  While you don't like flying, it seems as though you like these
+  hobbies:
+  
+  % endif
+  ${MJFhobby_zone}.
+
+  % if MJFhobbies['Running']:
+  Oh, you like running.  *Move along then!*
+  % endif
+---
+template: MJFincome_report
+content: |
+  % if MJFisemployed == 'No':
+  N/A
+  % else:
+  ${ currency(MJFannualincome) }
+  % endif
+---
+template: MJFhobby_zone
+content: |
+  % if MJFhobbies.all_false():
+  That's boring, you don't have any hobbies!
+  % else:
+  ${ MJFhobbies.true_values() }
+  % endif
+---
