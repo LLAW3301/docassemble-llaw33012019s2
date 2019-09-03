@@ -62,7 +62,7 @@ buttons:
 mandatory: True
 code: |
   if some_tests:
-    endpoint['ineligible']
-  else:
     endpoint['eligible']
+  else:
+    endpoint['ineligible']
 ---
