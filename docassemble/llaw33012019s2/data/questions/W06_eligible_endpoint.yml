@@ -4,6 +4,7 @@
 question: You are eligible
 subquestion: |
   Congratulations, you are eligible for our services.
+event: endpoint['eligible']
 buttons:
   - Exit: exit
   - Restart: restart

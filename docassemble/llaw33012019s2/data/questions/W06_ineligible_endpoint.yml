@@ -18,9 +18,9 @@ buttons:
 # in the main block
 code: |
   if (18 <= MJFage < 65) and (MJFis_citizen == 'Yes'):
-    some_tests = true
+    some_tests = True
   else:
-    some_tests = false
+    some_tests = False
 ---
 # A question block to ask the questions we need to determine
 # eligibility
