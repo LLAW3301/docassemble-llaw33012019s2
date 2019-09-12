@@ -1,0 +1,45 @@
+# Demonstration of how lists work
+---
+# First of all, you must declare your lists
+objects:
+  - MJFquestion_answer_list: DAList
+---
+# A pre-declared list of dictionaries.  Each element is a dictionary
+# with a 'question' and 'answer' key.  The 'question' value is pre-populated
+variable name: MJFquestion_answer_list
+data:
+  - question: "What is your name?"
+    answer: 
+  - question: "What is your address?"
+    answer: 
+  - question: "How are you feeling today?"
+    answer: 
+  - question: "Tell me about the last time you flew an aeroplane"
+    answer: 
+---
+# When you include a field in a pre-populated data structure you need to
+# force Docassemble to 'reconsider' it so that the question gets answered.
+# Delete this code block and you'll see what I mean.
+mandatory: True
+code: |
+  for i in range(len(MJFquestion_answer_list)):
+    if not MJFquestion_answer_list[i]['answer']:
+      reconsider("MJFquestion_answer_list[" + str(i) + "]['answer']")
+---
+# Mandatory block displays output
+mandatory: True
+question: List of Questions and Answers
+subquestion: |
+  Question|Answer
+  ---|----
+  % for MJFindex in range(len(MJFquestion_answer_list)):
+  ${ MJFquestion_answer_list[MJFindex]['question'] } | ${ MJFquestion_answer_list[MJFindex]['answer'] }
+  % endfor
+buttons:
+  - Exit: exit
+  - Restart: restart
+---
+question: ${ MJFquestion_answer_list[i]['question'] }
+fields:
+  - Answer:   MJFquestion_answer_list[i]['answer']
+---

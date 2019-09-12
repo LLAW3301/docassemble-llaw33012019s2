@@ -1,0 +1,46 @@
+# Demonstration of how dictionaries work
+---
+# First of all, you must declare your dictionary as an object
+objects:
+  - MJFids: DADict
+---
+# Mandatory block displays output
+mandatory: True
+question: List of FANs and names
+subquestion: |
+  Here's how to display a specific entry:
+  
+  - Entry for `ferr0182` is ${ MJFids['ferr0182'] }
+  
+  Here's how to display all the entries in the dictionary:
+  
+  FAN|Name
+  ---|----
+  % for MJFkey in MJFids.keys():
+  ${ MJFkey } | ${ MJFids[MJFkey] }
+  % endfor
+  
+  We could just dump the entire dictionary as well:
+  
+  - The keys are displayed by default: ${ MJFids }
+  - You can display the values: ${ MJFids.values() }
+buttons:
+  - Exit: exit
+  - Restart: restart
+---
+# Using a code block to populate the dictionary.
+# We could use question blocks too.  We'll do that
+# in another example
+code: |
+  MJFids['ferr0182'] = 'Mark Ferraretto'
+  MJFids['smit0354'] = 'Benjamin Smith'
+  MJFids['alle0973'] = 'Natalie Allen'
+  MJFids['alve0235'] = 'Cassandra Alvey'
+  MJFids['beit0098'] = 'Joshua Bietzel'
+---
+# A DADict has special 'methods' that allow you to automate
+# asking questions (we will get to these later).  For now, you
+# should always include this code block for your DADict
+code: |
+  MJFids.there_is_another = False
+---

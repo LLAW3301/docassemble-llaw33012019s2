@@ -1,0 +1,101 @@
+# Making decisions using a decision table
+---
+# First we declare the table as an object
+objects:
+  - MJFdt: DADict
+---
+# and then we populate it
+# It won't be clear from the table itself what each field is for.  Best practice is
+# to describe the fields in these comments ie:
+# Field description:
+# - Age category
+# - Relationship status
+# - Living independently
+variable name: MJFdt
+data:
+  # Age category (16_to_17, 18_to_20, 21_to_64)
+  16_to_17:
+    # Relationship status (single, not_single, ill_health)
+    single:
+      # Living independently (True or False)
+      # For couples this should always be set to True
+      False: 954.2   # Set the income threshold here
+      True:  1372.6
+    couple:  
+      True:  2692.8  # Couples always live independently so can put threshold here.
+  18_to_20:
+    single:
+      False: 1056.8
+      True:  1372.6
+    couple: 
+      True:  2692.8
+  21_to_64:
+    single:
+      True:  2024.4
+      False: 2024.4  # No false case given so we assume the same as True
+    couple:
+      True:  3096.4
+    illhealth:
+      True:  4008.8
+---    
+mandatory: True
+question: Income threshold information
+subquestion: |
+
+  Your income threshold is: **${ currency(MJFincome_threshold) }**
+
+  Information|Your response
+  ---|---
+  Age category | ${MJFage_category}
+  Relationship Status | ${MJFrelationship_status}
+  Living independently | ${MJFliving_independently}
+buttons:
+  - Exit: exit
+  - Restart: restart
+---
+# We'll ask all the questions in one block
+question: Please answer these questions
+fields:
+  - What is your age: MJFage_category
+    datatype: radio
+    choices:
+      - 16 to 17: 16_to_17
+      - 18 to 20: 18_to_20
+      - 21 to 64: 21_to_64
+      - None of these: NA
+  - What is your relationship status?: MJFrelationship_status
+    datatype: radio
+    choices:
+      - I'm single: single
+      - I'm in a relationship: couple
+      - I'm in a relationship but living apart due to ill health: ill_health
+---
+# We need to ask living independently separately because 
+# We only ask if the user is single
+question: Living Independently
+subquestion:
+  Do you live on your own or with your parents?
+field: MJFliving_independently
+buttons:
+  - I live with my parents: False
+  - I live on my own: True
+---
+# Below the living independently question we put a code block to set it
+# to 'True' if the user is not single.  Docassemble executes non-mandatory
+# blocks from the *bottom up*, so this code block will be executed first.
+# If this code block doesn't set the variable then Docassemble will ask the
+# question above.
+#
+# Note there is no 'else' clause in this if statement.  That means if the 
+# relationship status *is* single, then MJFliving_indpendently will simply
+# not be set in this code block.
+code: |
+  if MJFrelationship_status != 'single':
+    MJFliving_independently = True
+---
+# We can use a very long if statement to sort out the income threshold.  I have
+# only provided three examples here
+code: |
+  MJFincome_threshold = MJFdt[MJFage_category][MJFrelationship_status][MJFliving_independently]
+---
+  

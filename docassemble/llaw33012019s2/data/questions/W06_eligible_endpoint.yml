@@ -1,0 +1,10 @@
+# Code to process eligibility could go in this file.
+# Alternatively, this file could branch off into other files if
+# eligibility criteria are complex
+question: You are eligible
+subquestion: |
+  Congratulations, you are eligible for our services.
+event: endpoint['eligible']
+buttons:
+  - Exit: exit
+  - Restart: restart

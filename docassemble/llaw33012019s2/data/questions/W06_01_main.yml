@@ -34,8 +34,8 @@
 #
 # A main file can ask questions in an included file
 include:
-  - W06_02_eligible_endpoint.yml
-  - W06_02_ineligible_endpoint.yml
+  - W06_eligible_endpoint.yml
+  - W06_ineligible_endpoint.yml
 ---
 # We use a DADict object to set up endpoints.  We don't know
 # what this is yet so just take it on face value

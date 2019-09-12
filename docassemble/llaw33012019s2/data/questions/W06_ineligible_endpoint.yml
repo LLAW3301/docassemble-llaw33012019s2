@@ -1,0 +1,39 @@
+# This file might contain the code for
+# displaying an ineligible exit screen.  It could also
+# contain the question and code blocks for determining 
+# eligibility.
+---
+# In this question block, the 'event' tag is what
+# marks this as the ineligible endpoint.
+question: You are not eligible
+subquestion: |
+  For some reason or another, you have been determined
+  not to be eligible for something.  No idea what!
+event: endpoint['ineligible']
+buttons:
+  - Exit: exit
+  - Restart: restart
+---
+# A code block to set the some_tests variable used
+# in the main block
+code: |
+  if (18 <= MJFage < 65) and (MJFis_citizen == 'Yes'):
+    some_tests = True
+  else:
+    some_tests = False
+---
+# A question block to ask the questions we need to determine
+# eligibility
+question: Eligibility criteria
+subquestion: |
+  You must be between 18 and 65 and an 
+  Australian citizen to use our services
+fields:
+  - Are you an Australian citizen?: MJFis_citizen
+    datatype: radio
+    choices:
+      - Yes
+      - No
+  - What is your age?: MJFage
+    datatype: integer
+---

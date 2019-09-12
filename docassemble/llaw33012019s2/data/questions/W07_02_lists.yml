@@ -1,0 +1,64 @@
+# Demonstration of how lists work
+---
+# First of all, you must declare your lists
+objects:
+  - MJFquestions: DAList
+  - MJFanswers: DAList
+---
+# Mandatory block displays output
+mandatory: True
+question: List of Questions and Answers
+subquestion: |
+  Here's how to display a specific entry, 
+  for example `MJFquestions[0]`: ${ MJFquestions[0] }
+  
+  
+  Here's how to display all the entries in the list:
+  
+  Question|Answer
+  ---|----
+  % for MJFindex in range(len(MJFquestions)):
+  ${ MJFquestions[MJFindex] } | ${ MJFanswers[MJFindex] }
+  % endfor
+  
+  We could just dump the entire lists like this:
+  
+  - All the questions: ${ MJFquestions }
+  - All the answers: ${ MJFanswers }
+buttons:
+  - Exit: exit
+  - Restart: restart
+---
+question: Enter a question and answer
+fields:
+  - Question: MJFquestions[i]
+  - Answer:   MJFanswers[i]
+  - Is this the last question/answer?: MJFlastanswer
+    datatype: radio
+    choices:
+      - Yes
+      - No
+    default: No
+---
+# The property 'there_is_another' is a special property.  While it
+# is true, Docassemble will continue to populate the list.  Once it
+# is set to false, Docassmble assumes the list (or lists in our case)
+# are complete
+code: |
+  if MJFlastanswer == 'Yes':
+    MJFquestions.there_is_another = False
+    MJFanswers.there_is_another = False
+  else:
+    MJFquestions.there_is_another = True
+    MJFanswers.there_is_another = True
+---
+# The property 'there_are_any' is also a special property.  It needs to be
+# set to True if you are to gather any questions/answers at all.  You could
+# do this interactively (ie: ask an initial question like 'Do you want to
+# collect questions and answers' and set there_are_any depending on whether 
+# the user clicks 'yes' or 'no'.  But in our case we know we always want at
+# least one question, so we set there_are_any to True for both DALists
+code: |
+  MJFquestions.there_are_any = True
+  MJFanswers.there_are_any = True
+---

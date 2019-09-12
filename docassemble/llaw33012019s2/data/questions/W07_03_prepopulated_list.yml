@@ -1,0 +1,62 @@
+# Demonstration of how lists work
+---
+# First of all, you must declare your lists
+objects:
+  - MJFquestions: DAList
+  - MJFanswers: DAList
+---
+# You can pre-declare a list
+variable name: MJFquestions
+data:
+  - What is your name?
+  - What is your address?
+  - How are you feeling today?
+  - Tell me about the last time you flew an aeroplane
+---
+# Mandatory block displays output
+mandatory: True
+question: List of Questions and Answers
+subquestion: |
+  Here's how to display a specific entry, 
+  for example `MJFquestions[0]`: ${ MJFquestions[0] }
+  
+  
+  Here's how to display all the entries in the list:
+  
+  Question|Answer
+  ---|----
+  % for MJFindex in range(len(MJFquestions)):
+  ${ MJFquestions[MJFindex] } | ${ MJFanswers[MJFindex] }
+  % endfor
+  
+  We could just dump the entire lists like this:
+  
+  - All the questions: ${ MJFquestions }
+  - All the answers: ${ MJFanswers }
+buttons:
+  - Exit: exit
+  - Restart: restart
+---
+question: ${ MJFquestions[i] }
+fields:
+  - Answer:   MJFanswers[i]
+---
+# We dont' need to ask whether there are any more questions to ask as we
+# know exactly how many questions to ask.  So, we stop when we get to the
+# last question asked.
+code: |
+  if len(MJFquestions) == len(MJFanswers):
+    MJFanswers.there_is_another = False
+  else:
+    MJFanswers.there_is_another = True
+---
+# We don't need to set there_are_any for MJFquestions as it's pre-declared
+# But we still need to set it for MJFanswers
+code: |
+  MJFanswers.there_are_any = True
+---
+# Because you pre-declared the MJFquestions list you need to tell Docassemble
+# that it contains the complete list of questions
+code: |
+  MJFquestions.there_is_another = False
+---
