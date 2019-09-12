@@ -2,11 +2,11 @@
 ---
 # First of all, you must declare your lists
 objects:
-  - MJFquestion_answer_list: DAList
+  - MJFqalist: DAList
 ---
 # A pre-declared list of dictionaries.  Each element is a dictionary
 # with a 'question' and 'answer' key.  The 'question' value is pre-populated
-variable name: MJFquestion_answer_list
+variable name: MJFqalist
 data:
   - question: "What is your name?"
     answer: 
@@ -22,9 +22,9 @@ data:
 # Delete this code block and you'll see what I mean.
 mandatory: True
 code: |
-  for i in range(len(MJFquestion_answer_list)):
-    if not MJFquestion_answer_list[i]['answer']:
-      reconsider("MJFquestion_answer_list[" + str(i) + "]['answer']")
+  for i in range(len(MJFqalist)):
+    if not MJFqalist[i]['answer']:
+      reconsider("MJFqalist[" + str(i) + "]['answer']")
 ---
 # Mandatory block displays output
 mandatory: True
@@ -32,14 +32,14 @@ question: List of Questions and Answers
 subquestion: |
   Question|Answer
   ---|----
-  % for MJFindex in range(len(MJFquestion_answer_list)):
-  ${ MJFquestion_answer_list[MJFindex]['question'] } | ${ MJFquestion_answer_list[MJFindex]['answer'] }
+  % for MJFindex in range(len(MJFqalist)):
+  ${ MJFqalist[MJFindex]['question'] } | ${ MJFqalist[MJFindex]['answer'] }
   % endfor
 buttons:
   - Exit: exit
   - Restart: restart
 ---
-question: ${ MJFquestion_answer_list[i]['question'] }
+question: ${ MJFqalist[i]['question'] }
 fields:
-  - Answer:   MJFquestion_answer_list[i]['answer']
+  - Answer:   MJFqalist[i]['answer']
 ---
