@@ -17,8 +17,8 @@ subquestion: |
   
   Question|Answer
   ---|----
-  % for MJFindex in range(len(MJFquestions)):
-  ${ MJFquestions[MJFindex] } | ${ MJFanswers[MJFindex] }
+  % for MJFquestion in MJFquestions:
+  ${ MJFquestion } | ${ MJFanswers[loop.index] }
   % endfor
   
   We could just dump the entire lists like this:
