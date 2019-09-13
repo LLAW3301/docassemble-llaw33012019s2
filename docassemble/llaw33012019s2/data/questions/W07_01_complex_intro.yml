@@ -1,0 +1,40 @@
+---
+# A list expressed in YAML
+variable name: MJFquestions
+use objects: True
+data:
+  - "What is your name?"
+  - "What is your age?"
+  - "Where do you live?"
+  - "How tall are you?"
+---
+# The same list expressed as code
+code: |
+  MJFquestions = [ 'What is your name?', 'What is your age?',
+                   'Where do you live?', 'How tall are you?' ]
+---
+# Accessing an item in a list
+question: Access a list item
+subquestion: |
+  The first item in MJFquestions is ${ MJFquestions[0] }
+---
+# A dictionary expressed in YAML
+variable name: MJFuser_info
+use objects: True
+data:
+  FAN: 'ferr0182'
+  first_name: 'Mark'
+  last_name:  'Ferraretto'
+  email:      'ferr0182@flinders.ed.au'
+---
+# ...and in Python
+code: |
+  MJFuser_info2 = { 'FAN':'ferr0182', 'first_name':'Mark', 
+                   'last_name':'Ferraretto',
+                   'email':'ferr0182@flinders.edu.au' }
+---
+# Accessing a dictionary item.  Use the key to get the value
+question: Access a dictionary item
+subquestion: |
+  The stored FAN in the dictionary is ${ MJFuser_info2['FAN'] }
+---

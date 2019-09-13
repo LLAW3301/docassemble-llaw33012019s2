@@ -1,0 +1,47 @@
+# Demonstrating iteration over a dictionary
+---
+# Here's a dictionary containing student info
+variable name: MJFstudent_info
+use objects: True
+data:
+  FAN: 'ferr0182'
+  First Name: 'Mark'
+  Last Name:  'Ferraretto'
+  Age:        49
+  Email:      'mark.ferraretto@flinders.edu.au'
+---
+# Displaying without iteration
+mandatory: True
+question: Display without iteration
+subquestion: |
+  Just like lists, we need to list each element
+  separately.  That makes changing code very
+  inefficient and error-prone.
+  
+  Item|Info
+  ---|---
+  FAN:        | ${ MJFstudent_info['FAN'] }
+  First name: | ${ MJFstudent_info['First Name'] }
+  Last name   | ${ MJFstudent_info['Last Name'] }
+  Age:        | ${ MJFstudent_info['Age'] }
+  Email:      | ${ MJFstudent_info['Email'] }
+  
+buttons:
+  - Continue: continue
+---
+# Using iteration is better
+mandatory: True
+question: Iteration is a good thing
+subquestion: |
+  We can display any sized dictionary using these same
+  three lines of code
+  
+  Item|Info
+  ---|---
+  % for MJFkey in MJFstudent_info.keys():
+  ${ MJFkey } | ${ MJFstudent_info[MJFkey] }
+  % endfor
+  
+buttons:
+  - Exit: exit
+  - Restart: restart

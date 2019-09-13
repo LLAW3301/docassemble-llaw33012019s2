@@ -1,0 +1,44 @@
+# Demonstrating the benefits of iteration
+---
+# A list to store questions
+---
+# A list expressed in YAML
+variable name: MJFquestions
+use objects: True
+data:
+  - "What is your name?"
+  - "What is your age?"
+  - "Where do you live?"
+  - "How tall are you?"
+---
+# Displaying the questions without iteration
+mandatory: True
+question: Display without iteration
+subquestion: | 
+  Without iteration we need to list the questions out one by one
+  
+  - ${ MJFquestions[0] }
+  - ${ MJFquestions[1] }
+  - ${ MJFquestions[2] }
+  - ${ MJFquestions[3] }
+
+  It's inefficient - too much copy and pasting and difficult to modify
+buttons:
+  - Continue: continue
+---
+# Displaying with iteration is better
+mandatory: True
+question: Display with iteration
+subquestion: |
+  Look how much less we're writing here!
+  
+  % for MJFitem in MJFquestions:
+  - ${ MJFitem }
+  % endfor
+  
+  We can use the above three lines of code regardless of
+  whether we have 5 or 500 items in our list.  This is a
+  much more efficient way to store data
+buttons:
+  - Exit: exit
+  - Restart: restart
