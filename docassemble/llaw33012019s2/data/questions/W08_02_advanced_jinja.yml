@@ -1,0 +1,65 @@
+# Demonstrating advanced jinja and also some 
+# advanced list and checkbox work
+---
+# Define a complex data structure.  This is a DAList of DADicts.  Each list element
+# contains a question to be asked and a set of values to be displayed as checkboxes
+variable name: MJFquestions
+use objects: True
+data:
+  - MJFquestion: What was on top of spaghetti?
+    MJFanswers:
+      key0: False
+    MJFchoices:
+      - It was all covered with cheese
+      - My poor meatball
+      - Chili flakes
+  - MJFquestion: What happened next?
+    MJFanswers:
+      key0: False
+    MJFchoices:
+      - Somebody sneezed
+      - I minded my own business and had dinner
+  - MJFquestion: What happened to the meatball?
+    MJFanswers:
+      key0: False
+    MJFchoices:
+      - It rolled off the table and onto the floor.  Then my poor meatball rolled out of the door.
+      - Nothing.  I ate it.
+---
+# Iterate through the list to get all the answers:
+mandatory: True
+code: |
+  for MJFitem in MJFquestions:
+    MJFitem['MJFasked']
+---
+mandatory: True
+question: Introduction to checkboxes
+subquestion: |
+  #### Here is the result of your checkbox selection
+  
+  ${ MJFquestion_table }
+  
+attachment:
+  docx template file: W08_advanced_jinja_example.docx
+buttons:
+  - Exit: exit
+  - Restart: restart
+---
+table: MJFquestion_table
+rows:  MJFquestions
+columns:
+  - Question: |
+      row_item['MJFquestion']
+  - Selected answers: |
+      row_item['MJFanswers'].true_values()
+  - No. Selected answers: |
+      len(row_item['MJFanswers'].true_values())
+---
+question: |
+  ${ MJFquestions[i]['MJFquestion'] }
+fields:
+  - no label: MJFquestions[i]['MJFanswers']
+    datatype: checkboxes
+    code: MJFquestions[i]['MJFchoices']
+continue button field: MJFquestions[i]['MJFasked']
+---
