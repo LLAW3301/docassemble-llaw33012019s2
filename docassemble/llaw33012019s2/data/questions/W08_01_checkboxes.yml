@@ -1,0 +1,63 @@
+# Demonstrating capabilities of checkboxes
+---
+mandatory: True
+question: Introduction to checkboxes
+subquestion: |
+  #### Here is the result of your checkbox selection
+  
+  ${ checkbox_table }
+  
+  You may not care which item was selected, all you may be interested in is
+  whether *any* item was selected or *how many* items were selected (or not selected).
+  A Docassemble `DADict` has a number of *methods* that you can use to query your
+  checkbox.  To call a method, you append the method name to your variable (just
+  like we have in the `for` loop above) eg: call the `any_true()` method by using
+  `MJFcheckboxes.any_true()`
+  
+  Method Name|Description|Value (based on your selections)
+  ---|---|---
+  `all_true()`     | Returns true if all checkbox items were selected, false otherwise          | ${ MJFcheckboxes.all_true() }
+  `all_false()`    | Returns false if all checkbox items were selected, true otherwise          | ${ MJFcheckboxes.all_false() }
+  `any_true()`     | Returns true if *at least one* checkbox item was selected, false otherwise | ${ MJFcheckboxes.any_true() }
+  `any_false()`    | Returns true if *at least one* checkbox item was selected, false otherwise | ${ MJFcheckboxes.any_false() }
+  `true_values()`  | Returns a list of items that were selected                                 | ${ MJFcheckboxes.true_values() }
+  `false_values()` | Returns a list of items that were selected                                 | ${ MJFcheckboxes.true_values() }
+  
+  #### Counting true and false values
+  
+  You can count the number of true or false values returned by counting the number of
+  elements in the `true_values()` and `false_values()` lists
+  
+  Checkbox Item|Selected
+  ---|---
+  % for MJFkey in MJFcheckboxes:
+  ${ MJFkey } | ${ 'Selected' if MJFcheckboxes[MJFkey] else '' }
+  % endfor
+  
+  How to count|Result
+  ---|---
+  `len(MJFcheckboxes.true_values())` | ${ len(MJFcheckboxes.true_values()) }
+  `len(MJFcheckboxes.false_values())`| ${ len(MJFcheckboxes.false_values()) }
+  
+buttons:
+  - Exit: exit
+  - Restart: restart
+---
+table: checkbox_table
+rows:  MJFcheckboxes
+columns:
+  - Checkbox Item: |
+      row_index
+  - Selected: |
+      'Selected' if row_item else ''
+---
+question: Select some checkbox items (or don't!)
+fields:
+  - no label: MJFcheckboxes
+    datatype: checkboxes
+    choices:
+      - On top of spaghetti
+      - All covered with cheese
+      - I lost my poor meatball
+      - When somebody sneezed
+---
