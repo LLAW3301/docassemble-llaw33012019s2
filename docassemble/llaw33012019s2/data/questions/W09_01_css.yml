@@ -1,0 +1,21 @@
+---
+metadata:
+  title: |
+    SACAT Homelessness Advisor
+  short title: |
+    Homelessness Advisor
+---
+features:
+  css: mystyles.css
+---
+# My first Docassemble program
+mandatory: True
+question: Hello World!
+subquestion: |
+  Hello Mark,
+
+  Welcome to Docassemble!
+buttons:
+  - Exit: exit
+  - Restart: restart
+---
