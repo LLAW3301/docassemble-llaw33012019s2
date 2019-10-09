@@ -4,6 +4,13 @@ metadata:
     SACAT Homelessness Advisor
   short title: |
     Homelessness Advisor
+  logo: |
+    <div class="mjfimgcontainer">
+    <img src="/packagestatic/docassemble.playground3/SACAT.png">
+    Homelessness Advisor
+    </div>
+  pre: |
+    <div class="mjfpre">SACAT Homelessness Advisor</div>
 ---
 features:
   css: mystyles.css
@@ -18,4 +25,5 @@ subquestion: |
 buttons:
   - Exit: exit
   - Restart: restart
+  - Continue: continue
 ---
