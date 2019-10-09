@@ -6,7 +6,7 @@
     background-color: rgb(255,242,102) !important;
 }
 .navbar .navbar-brand{
-    color : #FFF;
+    color : #000;
     font-weight: bolder;
     font-size: 1.3em;
 }
@@ -14,7 +14,7 @@
     margin : 0 auto;
 }
 .navbar .nav-item a{
-    color: #FFF !important;
+    color: #000 !important;
 }
 
 .navbar .dropdown-menu{
