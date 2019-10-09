@@ -1,7 +1,3 @@
-.mynav{
-    background-image: url('../img/bg-nav.jpg');
-    height:500px;
-}
 .navbar{
     background-color: rgb(255,242,102) !important;
 }
@@ -10,9 +6,7 @@
     font-weight: bolder;
     font-size: 1.3em;
 }
-.navbar .navbar-nav{
-    margin : 0 auto;
-}
+
 .navbar .nav-item a{
     color: #000 !important;
 }
@@ -30,4 +24,25 @@
 }
 .navbar form button:hover{
     background-color: #000;
+}
+
+.mjfimgcontainer img{
+  width: auto;
+  height: 20px;
+}
+
+.mjfimgcontainer:hover{
+  color: #000;
+}
+
+.mjfpre{
+    color : #000;
+    font-weight: bolder;
+    font-size: 1.3em;
+}
+
+.btn .btn-primary{
+  color: #0;
+  background-color: rgb(255,242,102)
+  border-color: #0;
 }
