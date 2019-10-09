@@ -18,10 +18,10 @@
 }
 
 .navbar .dropdown-menu{
-    background-color: rgba(0,0,0,0.3);
+    background-color: rgba(255,242,102,0.3);
 }
 .dropdown-item:hover{
-    background-color: rgba(0,0,0,0.3);
+    background-color: rgba(255,242,102,0.3);
 }
 .navbar form button{
     background-color: #ea00b1;
