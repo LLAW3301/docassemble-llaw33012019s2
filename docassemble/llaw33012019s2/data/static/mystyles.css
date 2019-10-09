@@ -3,7 +3,7 @@
     height:500px;
 }
 .navbar{
-    background-color: transparent !important;
+    background-color: tomato !important;
 }
 .navbar .navbar-brand{
     color : #FFF;
