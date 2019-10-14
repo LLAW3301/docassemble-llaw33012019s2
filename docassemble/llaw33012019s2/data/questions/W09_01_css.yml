@@ -5,9 +5,11 @@ metadata:
   short title: |
     Homelessness Advisor
   logo: |
-    <div class="mjfimgcontainer">
-    <img src="/packagestatic/docassemble.playground3/SACAT.png">
-    Homelessness Advisor
+    <div class="media">
+      <img src="/packagestatic/docassemble.playground3/SACAT.png" class="mjfimgcontainer" height="40" width="160">
+      <div class="media-body">
+        <h5 class="mt-0">Homelessness Advisor</h5>
+      </div>
     </div>
   pre: |
     <div class="mjfpre">SACAT Homelessness Advisor</div>
