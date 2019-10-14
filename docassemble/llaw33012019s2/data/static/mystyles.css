@@ -6,6 +6,9 @@
     font-weight: bolder;
     font-size: 1.3em;
 }
+.navbar .navbar-brand:hover{
+    color: #000;
+}
 
 .navbar .navbar-brand:hover{
   color: #000;
