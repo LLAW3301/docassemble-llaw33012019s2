@@ -8,7 +8,7 @@ metadata:
     SACAT Homelessness Advisor
   short title: |
     Homelessness Advisor
-  show login: False
+  show login: True
 ---
 # Declare your logo as an object.  This is required to display the
 # logo in the navbar along with the title (by default, Docassemble
@@ -25,7 +25,7 @@ objects:
 features:
   css: SACAT.css
   debug: false
-  hide standard menu: True
+  hide standard menu: False
 ---
 # This code displays the logo and the title in the navbar.  It injects raw HTML
 # into the 'logo' metadata item using set_parts().  For more information on 
