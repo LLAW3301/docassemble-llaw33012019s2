@@ -7,7 +7,7 @@ metadata:
   show login: False
 ---
 objects:
-  - CBSLogo: DAStaticFile.using(filename='CBS-logo-small.png')
+  - CBSLogo: DAStaticFile.using(filename='CBS-logo-small-white.png')
 ---
 # Set the logo using set_parts()
 mandatory: True
@@ -23,21 +23,15 @@ code: |
   set_parts(logo=logostring)
 ---
 features:
-  css: SACAT.css
+  css: CBSInc.css
   debug: false
   hide standard menu: True
 ---
-mandatory: True
-code: |
-  
----
 # My first Docassemble program
 mandatory: True
-question: Hello World!
+question: CBS Inc Style Demonstrator
 subquestion: |
-  Hello Mark,
-
-  Welcome to Docassemble!
+  Hello world!
 buttons:
   - Exit: exit
   - Restart: restart
