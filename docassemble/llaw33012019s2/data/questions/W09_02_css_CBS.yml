@@ -46,7 +46,9 @@ code: |
   MJFlogostring += CBSLogo.url_for()
   
   # The rest of the raw HTML is appeneded to MJFlogostring...
-  MJFlogostring += '" class="mr-3" height="40">'
+  # Note: this line is where you set the height of your logo.  The width 
+  # is calculated automatically.
+  MJFlogostring += '" class="mr-3" height="80">'
   MJFlogostring += '<div class="media-body">'
   MJFlogostring += '<h5 class="mt-0">&nbsp; <b>' + MJFmetadata['title'] + '</b></h5>'
   MJFlogostring += '</div></div>'
@@ -67,7 +69,7 @@ subquestion: |
   block below is linked to a CSS style called `MJFheader`.  If you find `MJFheader` in the CSS
   file you will see the commands that set the colour and font style.
 
-  <span style="MJFheader">
+  <span class="MJFheader">
     This text is formatted according to the MJFheader style
   </span>
 
