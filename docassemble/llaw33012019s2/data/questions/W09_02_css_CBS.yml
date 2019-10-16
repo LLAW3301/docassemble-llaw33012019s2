@@ -1,0 +1,45 @@
+---
+metadata:
+  title: |
+    CBS Inc NDIS Advisor
+  short title: |
+    NDIS Advisor
+  show login: False
+---
+objects:
+  - CBSLogo: DAStaticFile.using(filename='CBS-logo-small.png')
+---
+# Set the logo using set_parts()
+mandatory: True
+code: |
+  MJFmetadata = all_variables(special='metadata')
+  logostring = '<div class="media">'
+  logostring += '<img src="'
+  logostring += CBSLogo.url_for()
+  logostring += '" class="mr-3" height="40">'
+  logostring += '<div class="media-body">'
+  logostring += '<h5 class="mt-0">&nbsp; <b>' + MJFmetadata['title'] + '</b></h5>'
+  logostring += '</div></div>'
+  set_parts(logo=logostring)
+---
+features:
+  css: SACAT.css
+  debug: false
+  hide standard menu: True
+---
+mandatory: True
+code: |
+  
+---
+# My first Docassemble program
+mandatory: True
+question: Hello World!
+subquestion: |
+  Hello Mark,
+
+  Welcome to Docassemble!
+buttons:
+  - Exit: exit
+  - Restart: restart
+  - Continue: continue
+---
