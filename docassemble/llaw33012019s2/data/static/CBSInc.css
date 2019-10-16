@@ -1,5 +1,5 @@
 .navbar{
-    background-color: rgb(255,242,102) !important;
+    background-color: rgb(208, 207, 255) !important;
 }
 .navbar .navbar-brand{
     color : #000;
@@ -15,13 +15,13 @@
 }
 
 .navbar .dropdown-menu{
-    background-color: rgba(255,242,102,0.3);
+    background-color: rgba(208, 207, 255,0.3);
 }
 .dropdown-item:hover{
-    background-color: rgba(255,242,102,0.3);
+    background-color: rgba(208, 207, 255,0.3);
 }
 .navbar form button{
-    background-color: #ea00b1;
+    background-color: rgb(208,207,255);
     color:#FFF;
     border:0;
 }
@@ -29,29 +29,14 @@
     background-color: #000;
 }
 
-.mjfimgcontainer img{
-  width: auto;
-  height: 20px;
-}
-
-.mjfimgcontainer:hover{
-  color: #000;
-}
-
-.mjfpre{
-    color : #000;
-    font-weight: bolder;
-    font-size: 1.3em;
-}
-
 .btn-primary{
   color: #000;
-  background-color: rgb(255,242,102);
+  background-color: rgb(208, 207, 255);
   border-color: #000;
 }
 
 .btn-primary:hover{
   color: #000;
-  background-color: rgba(255,242,102,0.3);
+  background-color: rgba(208,207,255,0.3);
   border-color: #000;
 }
