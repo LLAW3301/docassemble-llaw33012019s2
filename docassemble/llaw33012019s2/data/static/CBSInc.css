@@ -40,3 +40,12 @@
   background-color: rgba(208,207,255,0.3);
   border-color: #000;
 }
+
+.mjfHeader{
+    /* Set the colour to red */
+    color: rgb(255,0,0)
+    /* Make the font bigger.  This increases the font size by 20% */
+    font-size: 1.2em;
+    /* Add a text shadow */
+    text-shadow: 2px 2px 2px tomato;
+}
