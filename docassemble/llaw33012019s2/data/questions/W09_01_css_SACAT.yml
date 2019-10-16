@@ -1,4 +1,8 @@
 ---
+# A wide range of metadata can be set for your code.  In this example
+# we set the title, short title and (potentially)disable login prompts.
+# For more information on metadata visit
+# https://docassemble.org/docs/initial.html#metadata
 metadata:
   title: |
     SACAT Homelessness Advisor
@@ -6,37 +10,68 @@ metadata:
     Homelessness Advisor
   show login: False
 ---
+# Declare your logo as an object.  This is required to display the
+# logo in the navbar along with the title (by default, Docassemble
+# displays *either* the Title text or the logo)).  The image file
+# is in the 'Static' folder in the Playground
 objects:
   - SACATlogo: DAStaticFile.using(filename='SACAT.png')
 ---
-# Set the logo using set_parts()
-mandatory: True
-code: |
-  logostring = '<div class="media">'
-  logostring += '<img src="'
-  logostring += SACATlogo.url_for()
-  logostring += '" class="mr-3" height="40">'
-  logostring += '<div class="media-body">'
-  logostring += '<h5 class="mt-0">&nbsp; <b>Homelessness Advisor</b></h5>'
-  logostring += '</div></div>'
-  set_parts(logo=logostring)
----
+# Features can turn on or off many, well, features in Docassemble.  
+# Our example includes a CSS file and (potentially) turns off the menus in the navbar.
+# The CSS file is in the 'Static' folder in the playground.
+# For more information on features visit
+# https://docassemble.org/docs/initial.html#features
 features:
   css: SACAT.css
   debug: false
   hide standard menu: True
 ---
+# This code displays the logo and the title in the navbar.  It injects raw HTML
+# into the 'logo' metadata item using set_parts().  For more information on 
+# set_parts() visit https://docassemble.org/docs/functions.html#set_parts
 mandatory: True
 code: |
-  
----
-# My first Docassemble program
-mandatory: True
-question: Hello World!
-subquestion: |
-  Hello Mark,
+  # This line extracts all the metadata into a python dictionary.  We do
+  # this so we can extract the title from the dictionary.  Visit
+  # https://docassemble.org/docs/functions.html#all_variables for 
+  # more information
+  MJFmetadata = all_variables(special='metadata')
 
-  Welcome to Docassemble!
+  # We store a string containing the raw HTML in MJFlogostring
+  # We use the += sign to append to the string.
+  MJFlogostring = '<div class="media"><img src="'
+  
+  # This line adds the image file as a URL to the HTML code.
+  MJFlogostring += SACATlogo.url_for()
+  
+  # The rest of the raw HTML is appeneded to MJFlogostring...
+  # Note: this line is where you set the height of your logo.  The width 
+  # is calculated automatically.
+  MJFlogostring += '" class="mr-3" height="80">'
+  MJFlogostring += '<div class="media-body">'
+  MJFlogostring += '<h5 class="mt-0">&nbsp; <b>' + MJFmetadata['title'] + '</b></h5>'
+  MJFlogostring += '</div></div>'
+  # ...and we use set_parts() to set our new logo metadata
+  set_parts(logo=MJFlogostring)
+---
+# Customising the look and feel
+mandatory: True
+question: SACAT Look and Feel Demonstrator
+subquestion: |
+  This question block demonstrates how to perform basic customisations to the look and feel
+  of your app.  Most of the customisation is done in a CSS file.  CSS (or 'Cascading Style
+  Sheets') is a standard way of customising the look and feel of webapps.  Have a look at
+  the CSS file for this app to see more information about how it is customised.
+
+  You can also use raw HTML and CSS to improve the display of your outputs.  Raw HTML can be
+  mixed with markdown.  You can use CSS to control how your raw HTML looks.  For example, the `span`
+  block below is linked to a CSS style called `MJFheader`.  If you find `MJFheader` in the CSS
+  file you will see the commands that set the colour and font style.
+
+  <span class="MJFheader">
+    This text is formatted according to the MJFheader style
+  </span>
 buttons:
   - Exit: exit
   - Restart: restart

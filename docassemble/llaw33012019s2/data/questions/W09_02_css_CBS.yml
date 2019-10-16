@@ -1,14 +1,14 @@
 ---
 # A wide range of metadata can be set for your code.  In this example
-# we set the title, short title and disable login prompts.  Fore more
-# information on metadata visit
+# we set the title, short title and (potentially)disable login prompts.
+# For more information on metadata visit
 # https://docassemble.org/docs/initial.html#metadata
 metadata:
   title: |
     CBS Inc NDIS Advisor
   short title: |
     NDIS Advisor
-  show login: False
+  show login: True
 ---
 # Declare your logo as an object.  This is required to display the
 # logo in the navbar along with the title (by default, Docassemble
@@ -18,14 +18,14 @@ objects:
   - CBSLogo: DAStaticFile.using(filename='CBS-logo-small-white.png')
 ---
 # Features can turn on or off many, well, features in Docassemble.  
-# Our example includes a CSS file and turns off the menus in the navbar.
+# Our example includes a CSS file and (potentially) turns off the menus in the navbar.
 # The CSS file is in the 'Static' folder in the playground.
 # For more information on features visit
 # https://docassemble.org/docs/initial.html#features
 features:
   css: CBSInc.css
   debug: false
-  hide standard menu: True
+  hide standard menu: False
 ---
 # This code displays the logo and the title in the navbar.  It injects raw HTML
 # into the 'logo' metadata item using set_parts().  For more information on 
@@ -57,7 +57,7 @@ code: |
 ---
 # Customising the look and feel
 mandatory: True
-question: CBS Inc Style Demonstrator
+question: CBS Inc Look and Feel Demonstrator
 subquestion: |
   This question block demonstrates how to perform basic customisations to the look and feel
   of your app.  Most of the customisation is done in a CSS file.  CSS (or 'Cascading Style
