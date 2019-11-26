@@ -7,7 +7,7 @@ subquestion: |
 
   Dear ${ MJFsalutation + ' ' + MJFlastname },
 
-  Thi sis a quick introduction to Markdown.
+  This is a quick introduction to Markdown.
 
   Two lines for a line break
   because a single line doesn't break at all.
